@@ -59,6 +59,7 @@ public class RctManager {
      */
     public ReactInstanceManager createReactInstanceManager(BaseReactActivity reactActivity) {
         ReactInstanceManager.Builder builder = ReactInstanceManager.builder()
+                .setUseOldBridge(true)
                 .setApplication((Application) reactActivity.getApplicationContext())
                 .setJSMainModuleName(reactActivity.getJSMainModuleName())
                 .setUseDeveloperSupport(reactActivity.getUseDeveloperSupport())
@@ -201,4 +202,3 @@ public class RctManager {
         }
     }
 }
-

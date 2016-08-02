@@ -281,12 +281,28 @@ public class RctActivityModule extends ReactContextBaseJavaModule {
         }
 
         final Screen screen = new Screen(skreen);
-        context.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                context.resetTo(screen);
+
+        // First, check if the screen should be reset from a Modal
+        ModalController modalController = ModalController.getInstance();
+        if (modalController.isModalDisplayed()) {
+            final RnnModal modal = modalController.get();
+            if (modal != null) {
+                context.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        modal.resetTo(screen);
+                    }
+                });
             }
-        });
+            return;
+        } else {
+            context.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    context.resetTo(screen);
+                }
+            });
+        }
     }
 
     @ReactMethod

@@ -81,6 +81,11 @@ public class RnnModal extends Dialog implements DialogInterface.OnDismissListene
         return popped;
     }
 
+    public void resetTo(Screen screen) {
+        mScreenStack.resetTo(screen);
+        mToolBar.update(screen);
+    }
+
     @Nullable
     public Screen getCurrentScreen() {
         return mScreenStack.isEmpty() ? null : mScreenStack.peek();

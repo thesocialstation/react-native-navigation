@@ -83,7 +83,7 @@ public class BottomTabActivity extends BaseReactActivity implements AHBottomNavi
     protected void onResume() {
         super.onResume();
         if (mScreenStacks != null) {
-            //StyleHelper.updateStyles(mToolbar, getCurrentScreen());
+            StyleHelper.updateStyles(mToolbar, getCurrentScreen());
         }
     }
 
@@ -155,10 +155,10 @@ public class BottomTabActivity extends BaseReactActivity implements AHBottomNavi
 
     @Override
     public Screen getCurrentScreen() {
-        Screen currentScreen = super.getCurrentScreen();
-        if (currentScreen != null) {
-            return currentScreen;
-        }
+//        Screen currentScreen = super.getCurrentScreen();
+//        if (currentScreen != null) {
+//            return currentScreen;
+//        }
 
         return mScreenStacks != null ? mScreenStacks.get(mCurrentStackPosition).peek() : null;
     }

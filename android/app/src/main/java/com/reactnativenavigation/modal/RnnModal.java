@@ -44,13 +44,14 @@ public class RnnModal extends Dialog implements DialogInterface.OnDismissListene
         mContentView = LayoutInflater.from(context).inflate(R.layout.modal_layout, null, false);
         mToolBar = (RnnToolBar) mContentView.findViewById(R.id.toolbar);
         mScreenStack = (ScreenStack) mContentView.findViewById(R.id.screenStack);
+
+        Animation animation = AnimationUtils.loadAnimation(context, R.anim.slide_up);
+        mContentView.setAnimation(animation);
         setContentView(mContentView);
         mToolBar.update(screen);
         mScreenStack.push(screen, new RctView.OnDisplayedListener() {
             @Override
             public void onDisplayed() {
-                Animation animation = AnimationUtils.loadAnimation(context, R.anim.slide_up);
-                mContentView.setAnimation(animation);
                 mContentView.animate();
             }
         });

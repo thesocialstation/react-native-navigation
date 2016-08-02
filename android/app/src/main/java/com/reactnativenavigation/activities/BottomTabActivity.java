@@ -83,7 +83,7 @@ public class BottomTabActivity extends BaseReactActivity implements AHBottomNavi
     protected void onResume() {
         super.onResume();
         if (mScreenStacks != null) {
-            StyleHelper.updateStyles(mToolbar, getCurrentScreen());
+            //StyleHelper.updateStyles(mToolbar, getCurrentScreen());
         }
     }
 

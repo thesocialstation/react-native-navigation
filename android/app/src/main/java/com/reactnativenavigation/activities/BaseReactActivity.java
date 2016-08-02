@@ -266,6 +266,10 @@ public abstract class BaseReactActivity extends AppCompatActivity implements Def
         return null;
     }
 
+    public void updateStyle(Screen screen) {
+        StyleHelper.updateStyles(mToolbar, screen);
+    }
+
     protected abstract String getCurrentNavigatorId();
 
     @CallSuper

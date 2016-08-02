@@ -109,7 +109,7 @@ public class RnnModal extends Dialog implements DialogInterface.OnDismissListene
         BaseReactActivity context = ContextProvider.getActivityContext();
         if (context != null) {
             Screen currentScreen = context.getCurrentScreen();
-            StyleHelper.updateStyles(mToolBar, currentScreen);
+            context.updateStyle(currentScreen);
         }
     }
 }

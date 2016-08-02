@@ -41,6 +41,8 @@ import com.reactnativenavigation.utils.StyleHelper;
 import com.reactnativenavigation.views.RnnToolBar;
 import com.reactnativenavigation.views.ScreenStack;
 
+import com.github.yamill.orientation.OrientationPackage;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -139,7 +141,8 @@ public abstract class BaseReactActivity extends AppCompatActivity implements Def
     public List<ReactPackage> getPackages() {
         return Arrays.asList(
                 new MainReactPackage(),
-                new RnnPackage()
+                new RnnPackage(),
+                new OrientationPackage(this)
         );
     }
 
@@ -282,6 +285,11 @@ public abstract class BaseReactActivity extends AppCompatActivity implements Def
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
+
+        Intent intent = new Intent("onConfigurationChanged");
+        intent.putExtra("newConfig", newConfig);
+        this.sendBroadcast(intent);
+
         if (mDrawerToggle != null) {
             mDrawerToggle.onConfigurationChanged(newConfig);
         }

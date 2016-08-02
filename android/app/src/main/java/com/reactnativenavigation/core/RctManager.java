@@ -16,7 +16,6 @@ import com.reactnativenavigation.activities.BaseReactActivity;
 import com.reactnativenavigation.core.objects.Screen;
 import com.reactnativenavigation.utils.ContextProvider;
 import com.reactnativenavigation.utils.ReflectionUtils;
-import com.reactnativenavigation.controllers.ModalController;
 
 import static com.facebook.react.modules.core.DeviceEventManagerModule.RCTDeviceEventEmitter;
 
@@ -193,7 +192,7 @@ public class RctManager {
         private void onJSBundleReloaded() {
             // Dismiss modals associated with previous activity
             ModalController.getInstance().dismissAllModals();
-
+            
             BaseReactActivity context = ContextProvider.getActivityContext();
             if (context != null) {
                 context.onJSBundleReloaded();

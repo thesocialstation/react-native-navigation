@@ -190,6 +190,9 @@ public class RctManager {
          * Detach previously added ReactRootViews before handling bundle.
          */
         private void onJSBundleReloaded() {
+            // Dismiss modals associated with previous activity
+            ModalController.getInstance().dismissAllModals();
+            
             BaseReactActivity context = ContextProvider.getActivityContext();
             if (context != null) {
                 context.onJSBundleReloaded();

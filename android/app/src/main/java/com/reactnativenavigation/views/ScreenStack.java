@@ -114,26 +114,28 @@ public class ScreenStack extends android.support.design.widget.CoordinatorLayout
         RctView view = new RctView(mReactActivity, mReactInstanceManager, screen, onDisplayed);
         addView(view, MATCH_PARENT, MATCH_PARENT);
 
-        ScreenView oldScreenView = null;
+        final List<ScreenView> oldScreenViews = new ArrayList<>();
         if (!mStack.isEmpty()) {
             while (getStackSize() > 0) {
                 ScreenView popped = mStack.pop();
-                popped.view.onRemoveFromScreen();
-                removeView(popped.view);
-                if (oldScreenView == null) {
-                    oldScreenView = popped;
-                }
+                oldScreenViews.add(popped);
             }
         }
 
         // Add screen to stack after it's clear
-        mStack.push(new ScreenView(screen, view));
+        this.push(screen, new RctView.OnDisplayedListener() {
+            @Override
+            public void onDisplayed() {
+                for ( ScreenView screenView : oldScreenViews ) {
+                    screenView.view.onRemoveFromScreen();
+                    // Enabling this next line causes screen flicker. I believe the view is already
+                    // removed from  the push and not needed - RKH
+                    //removeView(screenView.view);
+                }
+            }
+        });
 
-        if (oldScreenView == null) {
-            return null;
-        }
-
-        return oldScreenView.screen;
+        return null;
     }
 
     public boolean isEmpty() {

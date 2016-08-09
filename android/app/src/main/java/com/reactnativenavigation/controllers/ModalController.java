@@ -54,8 +54,7 @@ public class ModalController {
     }
 
     public void dismissModal() {
-        WeakReference<RnnModal> ref = mModals.pop();
-        RnnModal modal = RefUtils.get(ref);
+        RnnModal modal = this.get();
         if (modal != null) {
             modal.dismiss();
         }

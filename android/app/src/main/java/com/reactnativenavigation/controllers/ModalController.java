@@ -2,7 +2,10 @@ package com.reactnativenavigation.controllers;
 
 import android.support.annotation.Nullable;
 
+import com.reactnativenavigation.activities.BaseReactActivity;
+import com.reactnativenavigation.core.objects.Screen;
 import com.reactnativenavigation.modal.RnnModal;
+import com.reactnativenavigation.utils.ContextProvider;
 import com.reactnativenavigation.utils.RefUtils;
 
 import java.lang.ref.WeakReference;

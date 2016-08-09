@@ -45,6 +45,15 @@ public class ModalController {
         if (isModalDisplayed()) {
             mModals.pop();
         }
+
+        if (!isModalDisplayed()) {
+            // After modal is dismissed, update Toolbar with screen from parent activity or previously displayed modal
+            BaseReactActivity context = ContextProvider.getActivityContext();
+            if (context != null) {
+                Screen currentScreen = context.getCurrentScreen();
+                context.updateStyle(currentScreen);
+            }
+        }
     }
 
     public void dismissAllModals() {

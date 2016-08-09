@@ -105,11 +105,5 @@ public class RnnModal extends Dialog implements DialogInterface.OnDismissListene
     public void onDismiss(DialogInterface dialog) {
         mScreenStack.removeAllReactViews();
         ModalController.getInstance().remove();
-        // After modal is dismissed, update Toolbar with screen from parent activity or previously displayed modal
-        BaseReactActivity context = ContextProvider.getActivityContext();
-        if (context != null) {
-            Screen currentScreen = context.getCurrentScreen();
-            context.updateStyle(currentScreen);
-        }
     }
 }

@@ -106,4 +106,8 @@ public class RnnModal extends Dialog implements DialogInterface.OnDismissListene
         mScreenStack.removeAllReactViews();
         ModalController.getInstance().remove();
     }
+
+    public void removeAllReactViews() {
+        mScreenStack.removeAllReactViews();
+    }
 }

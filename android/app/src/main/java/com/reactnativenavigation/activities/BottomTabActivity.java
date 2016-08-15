@@ -293,6 +293,7 @@ public class BottomTabActivity extends BaseReactActivity implements AHBottomNavi
 
     @Override
     protected void removeAllReactViews() {
+        ModalController.getInstance().removeAllReactViews();
         for (ScreenStack screenStack : mScreenStacks) {
             screenStack.removeAllReactViews();
         }

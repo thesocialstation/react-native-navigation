@@ -71,4 +71,11 @@ public class ModalController {
             modal.dismiss();
         }
     }
+
+    public void removeAllReactViews() {
+        while (isModalDisplayed()) {
+            RnnModal modal = RefUtils.get(mModals.pop());
+            modal.removeAllReactViews();
+        }
+    }
 }

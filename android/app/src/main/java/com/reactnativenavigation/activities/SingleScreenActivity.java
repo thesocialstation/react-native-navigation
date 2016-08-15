@@ -102,6 +102,7 @@ public class SingleScreenActivity extends BaseReactActivity {
 
     @Override
     protected void removeAllReactViews() {
+        ModalController.getInstance().removeAllReactViews();
         mScreenStack.removeAllReactViews();
     }
 

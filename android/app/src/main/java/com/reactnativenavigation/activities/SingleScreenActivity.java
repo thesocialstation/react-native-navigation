@@ -4,6 +4,7 @@ import android.support.design.widget.CoordinatorLayout;
 
 import com.facebook.react.bridge.ReadableMap;
 import com.reactnativenavigation.R;
+import com.reactnativenavigation.controllers.ModalController;
 import com.reactnativenavigation.core.RctManager;
 import com.reactnativenavigation.core.objects.Drawer;
 import com.reactnativenavigation.core.objects.Screen;

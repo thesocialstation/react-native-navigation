@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "react-native-controllers": "thesocialstation/react-native-controllers#bugfixes",
-    "react-native-orientation": "^1.17.0"
+    "react-native-orientation": "yamill/react-native-orientation#d0ccc71a4e797a191979d668057726dd689b76ad"
   },
   "optionalDependencies": {
     "react-redux": "*"

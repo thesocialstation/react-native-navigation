@@ -414,17 +414,8 @@ public abstract class BaseReactActivity extends AppCompatActivity implements Def
     }
 
     protected void setupDrawer(Screen screen, Drawer drawer, int drawerFrameId, int drawerLayoutId) {
-        if (drawer == null || drawer.left == null) {
-            return;
-        }
-
-        mDrawerStack = new ScreenStack(this);
-        FrameLayout drawerFrame = (FrameLayout) findViewById(drawerFrameId);
-        drawerFrame.addView(mDrawerStack);
-        mDrawerStack.push(drawer.left);
-
         mDrawerLayout = (DrawerLayout) findViewById(drawerLayoutId);
-        mDrawerToggle = mToolbar.setupDrawer(mDrawerLayout, drawer.left, screen);
+        mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
     }
 
     public void setNavigationButtons(ReadableMap buttons) {

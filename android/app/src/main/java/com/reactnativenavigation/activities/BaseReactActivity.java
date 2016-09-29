@@ -142,7 +142,7 @@ public abstract class BaseReactActivity extends AppCompatActivity implements Def
         return Arrays.asList(
                 new MainReactPackage(),
                 new RnnPackage(),
-                new OrientationPackage(this)
+                new OrientationPackage()
         );
     }
 

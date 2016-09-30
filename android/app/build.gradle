@@ -5,10 +5,14 @@ android {
     buildToolsVersion "23.0.1"
 
     defaultConfig {
+        generatedDensities = []
         minSdkVersion 16
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
+    }
+    aaptOptions {
+        additionalParameters "--no-version-vectors"
     }
     defaultPublishConfig 'release'
     publishNonDefault true

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
 import android.support.annotation.CallSuper;
+import android.support.annotation.NonNull;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -27,6 +28,8 @@ import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.common.ReactConstants;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
+import com.facebook.react.modules.core.PermissionAwareActivity;
+import com.facebook.react.modules.core.PermissionListener;
 import com.facebook.react.shell.MainReactPackage;
 import com.reactnativenavigation.BuildConfig;
 import com.reactnativenavigation.controllers.ModalController;
@@ -48,7 +51,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-public abstract class BaseReactActivity extends AppCompatActivity implements DefaultHardwareBackBtnHandler {
+public abstract class BaseReactActivity extends AppCompatActivity implements DefaultHardwareBackBtnHandler, PermissionAwareActivity {
 
     protected static final String KEY_ANIMATED = "animated";
     protected static final String KEY_BADGE = "badge";
@@ -63,6 +66,8 @@ public abstract class BaseReactActivity extends AppCompatActivity implements Def
     private static final String REDBOX_PERMISSION_MESSAGE =
             "Overlay permissions needs to be granted in order for react native apps to run in dev mode";
 
+
+    private @Nullable PermissionListener mPermissionListener;
     @Nullable
     protected ReactInstanceManager mReactInstanceManager;
     private boolean mDoRefresh = false;
@@ -470,5 +475,20 @@ public abstract class BaseReactActivity extends AppCompatActivity implements Def
     }
 
     public void showFAB(ReadableMap params) {
+    }
+
+    @Override
+    public void requestPermissions(String[] permissions, int requestCode, PermissionListener listener) {
+        if ( Build.VERSION.SDK_INT >= 23 ) {
+            mPermissionListener = listener;
+            this.requestPermissions(permissions, requestCode);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if ( mPermissionListener != null &&  mPermissionListener.onRequestPermissionsResult(requestCode, permissions, grantResults) ) {
+            mPermissionListener = null;
+        }
     }
 }

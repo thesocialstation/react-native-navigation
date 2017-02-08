@@ -29,7 +29,7 @@ public class TabActivity extends BaseReactActivity {
     @Override
     protected void handleOnCreate() {
         super.handleOnCreate();
-        mReactInstanceManager = RctManager.getInstance().getReactInstanceManager();
+        mReactInstanceManager = this.getReactInstanceManager();
 
         setContentView(R.layout.tab_activity);
         mToolbar = (RnnToolBar) findViewById(R.id.toolbar);

@@ -174,7 +174,7 @@ public abstract class BaseReactActivity extends AppCompatActivity implements Def
         return getReactInstanceManager();
     }
 
-    protected ReactInstanceManager getReactInstanceManager() {
+    public ReactInstanceManager getReactInstanceManager() {
         RctManager rctManager = RctManager.getInstance();
         if (!rctManager.isInitialized()) {
             rctManager.init(this);

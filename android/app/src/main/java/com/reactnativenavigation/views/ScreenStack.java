@@ -54,7 +54,7 @@ public class ScreenStack extends android.support.design.widget.CoordinatorLayout
 
     public void push(Screen screen, RctView.OnDisplayedListener onDisplayed) {
         RctView oldView = mStack.isEmpty() ? null : mStack.peek().view;
-        RctView view = new RctView(mReactActivity, RctManager.getInstance().getReactInstanceManager(), screen, onDisplayed);
+        RctView view = new RctView(mReactActivity, mReactActivity.getReactInstanceManager(), screen, onDisplayed);
         if (oldView != null) {
             addView(view, MATCH_PARENT, MATCH_PARENT);
 
@@ -111,7 +111,7 @@ public class ScreenStack extends android.support.design.widget.CoordinatorLayout
     }
 
     public Screen resetTo(Screen screen, RctView.OnDisplayedListener onDisplayed) {
-        RctView view = new RctView(mReactActivity, RctManager.getInstance().getReactInstanceManager(), screen, onDisplayed);
+        RctView view = new RctView(mReactActivity, mReactActivity.getReactInstanceManager(), screen, onDisplayed);
         addView(view, MATCH_PARENT, MATCH_PARENT);
 
         final List<ScreenView> oldScreenViews = new ArrayList<>();
@@ -174,7 +174,7 @@ public class ScreenStack extends android.support.design.widget.CoordinatorLayout
             // Ensure view will be properly detached and unmounted
             view.onRemoveFromScreen();
             // Unmount the view
-            view.detachReactRootView(RctManager.getInstance().getReactInstanceManager());
+            view.detachReactRootView(mReactActivity.getReactInstanceManager());
         }
         removeAllViews();
     }

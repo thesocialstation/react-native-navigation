@@ -47,4 +47,7 @@ dependencies {
     compile (project(':react-native-orientation')) {
       exclude group: 'com.facebook.react', module: 'react-native'
     }
+    compile (project(':react-native-config')) {
+      exclude group: 'com.facebook.react', module: 'react-native'
+    }
 }

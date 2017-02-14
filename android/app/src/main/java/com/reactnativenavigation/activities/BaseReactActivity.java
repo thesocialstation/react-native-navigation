@@ -45,6 +45,7 @@ import com.reactnativenavigation.views.RnnToolBar;
 import com.reactnativenavigation.views.ScreenStack;
 
 import com.github.yamill.orientation.OrientationPackage;
+import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -147,7 +148,8 @@ public abstract class BaseReactActivity extends AppCompatActivity implements Def
         return Arrays.asList(
                 new MainReactPackage(),
                 new RnnPackage(),
-                new OrientationPackage()
+                new OrientationPackage(),
+                new ReactNativeConfigPackage()
         );
     }
 

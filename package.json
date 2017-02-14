@@ -23,7 +23,8 @@
   },
   "dependencies": {
     "react-native-controllers": "thesocialstation/react-native-controllers#bugfixes",
-    "react-native-orientation": "thesocialstation/react-native-orientation#android-specific-listener"
+    "react-native-orientation": "thesocialstation/react-native-orientation#android-specific-listener",
+    "react-native-config": "^0.1.0"
   },
   "optionalDependencies": {
     "react-redux": "*"
